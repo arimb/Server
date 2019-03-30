@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 function reload(){
 	$.ajax({
-		url: "http://192.168.1.16:5000/getDistrictPoints/"+$("select#year").val(),
+		url: "https://arimb.ddns.net/getDistrictPoints/"+$("select#year").val(),
 		type: "GET",
 		success: function(result){
 			console.log(result)
