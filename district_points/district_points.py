@@ -1,6 +1,7 @@
 import requests
-import time
-import csv
+# import time
+# import csv
+import json
 
 class Team:
     def __init__(self, key):
@@ -33,11 +34,32 @@ class Team:
         return self.total_award() / (self.num_events ** 0.7)
     def valadj(self, value):
         return value * (self.num_events ** -0.7)
+    def make_dict(self):
+        return {"adj_dp": self.adj(),
+                "awards_adj": self.adjawards(),
+                "total": self.total(),
+                "total_awards": self.total_award(),
+                "playoffs": self.playoff,
+                "best_playoff": self.bestPlayoff,
+                "alliance": self.alliance,
+                "best_alliance": self.bestAlliance,
+                "qual": self.qual,
+                "best_qual": self.bestQual,
+                "adj_alliance": self.valadj(self.alliance),
+                "adj_playoff": self.valadj(self.playoff),
+                "adj_qual": self.valadj(self.qual),
+                "awards": self.awards,
+                "adj_awards": self.valadj(self.awards),
+                "num_events": self.num_events}
 
 def get_tba_data(url):
-    return requests.get("https://www.thebluealliance.com/api/v3/" + url,
+    try:
+        return requests.get("https://www.thebluealliance.com/api/v3/" + url,
                         {"accept": "application%2Fjson",
                          "X-TBA-Auth-Key": "gl4GXuoqG8anLUrLo356LIeeQZk15cfSoXF72YT3mYkI38cCoAmReoCSSF4XWccQ"}).json()
+    except:
+        print("oops " + url)
+        return get_tba_data(url)
 
 def get_district_points(year):
     teams = {}
@@ -67,29 +89,32 @@ def get_district_points(year):
     #                                      teams[key].valadj(teams[key].qual)), reverse=True)
 
 def recalc(year):
-    data = get_district_points(year)
-    with open(str(year) + ".csv", "w+") as file:
-        file.write("Team,AdjDP,AwardsAdj,TotalDP,AwardsTotal,Playoff,BestPlayoff,Alliance,BestAlliance,Qual,BestQual,AdjPlayoff,AdjAlliance,AdjQual,Awards,AdjAwards,NumEvents\n")
-        for team, DP in data.items():
-            file.write(team[3:] + ',' +
-                       str(DP.adj()) + ',' +
-                       str(DP.adjawards()) +',' +
-                       str(DP.total()) + ',' +
-                       str(DP.total_award()) + ',' +
-                       str(DP.playoff) + ',' +
-                       str(DP.bestPlayoff) + ',' +
-                       str(DP.alliance) + ',' +
-                       str(DP.bestAlliance) + ',' +
-                       str(DP.qual) + ',' +
-                       str(DP.bestQual) + ',' +
-                       str(DP.valadj(DP.alliance)) + ',' +
-                       str(DP.valadj(DP.playoff)) + ',' +
-                       str(DP.valadj(DP.qual)) + ',' +
-                       str(DP.awards) + ',' +
-                       str(DP.valadj(DP.awards)) + ',' +
-                       str(DP.num_events) + '\n')
+    with open("/var/www/html/" + str(year) + ".json", "w+") as file:
+        json.dump({team: Team.make_dict(x) for team, x in get_district_points(year).items()}, file)
 
-    times = {}
+#    data = get_district_points(year)
+#    with open(str(year) + ".csv", "w+") as file:
+#        file.write("Team,AdjDP,AwardsAdj,TotalDP,AwardsTotal,Playoff,BestPlayoff,Alliance,BestAlliance,Qual,BestQual,AdjPlayoff,AdjAlliance,AdjQual,Awards,AdjAwards,NumEvents\n")
+#        for team, DP in data.items():
+#            file.write(team[3:] + ',' +
+#                       str(DP.adj()) + ',' +
+#                       str(DP.adjawards()) +',' +
+#                       str(DP.total()) + ',' +
+#                       str(DP.total_award()) + ',' +
+#                       str(DP.playoff) + ',' +
+#                       str(DP.bestPlayoff) + ',' +
+#                       str(DP.alliance) + ',' +
+#                       str(DP.bestAlliance) + ',' +
+#                       str(DP.qual) + ',' +
+#                       str(DP.bestQual) + ',' +
+#                       str(DP.valadj(DP.alliance)) + ',' +
+#                       str(DP.valadj(DP.playoff)) + ',' +
+#                       str(DP.valadj(DP.qual)) + ',' +
+#                       str(DP.awards) + ',' +
+#                       str(DP.valadj(DP.awards)) + ',' +
+#                       str(DP.num_events) + '\n')
+
+#    times = {}
     # with open("times.csv", "w+") as file:
     #     reader = csv.DictReader(file)
     #     for row in reader:
@@ -100,4 +125,4 @@ def recalc(year):
     #     for y, t in times.items():
     #         file.write(y + ',' + t + '\n')
 
-    return data
+#    return data
