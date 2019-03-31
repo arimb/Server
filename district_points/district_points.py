@@ -1,4 +1,6 @@
 import requests
+import time
+import csv
 
 class Team:
     def __init__(self, key):
@@ -55,6 +57,14 @@ def get_district_points(year):
             teams[teamKey].add_event(event, DPs[teamKey])
 
     return teams
+    # return sorted(teams.items(), key=lambda key:(teams[key].adjawards(),
+    #                                      teams[key].adj(),
+    #                                      teams[key].valadj(teams[key].playoff),
+    #                                      teams[key].bestPlayoff,
+    #                                      teams[key].valadj(teams[key].alliance),
+    #                                      teams[key].valadj(teams[key].alliance),
+    #                                      teams[key].bestAlliance,
+    #                                      teams[key].valadj(teams[key].qual)), reverse=True)
 
 def recalc(year):
     data = get_district_points(year)
@@ -78,4 +88,16 @@ def recalc(year):
                        str(DP.awards) + ',' +
                        str(DP.valadj(DP.awards)) + ',' +
                        str(DP.num_events) + '\n')
+
+    times = {}
+    # with open("times.csv", "w+") as file:
+    #     reader = csv.DictReader(file)
+    #     for row in reader:
+    #         times[row["Year"]] = row["Time"]
+    #     print(times)
+    #     times[str(year)] = str(time.time())
+    #     file.write("Year,Time\n")
+    #     for y, t in times.items():
+    #         file.write(y + ',' + t + '\n')
+
     return data
