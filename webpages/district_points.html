@@ -3,28 +3,6 @@
 <head>
 	<title>AriMB - District Points</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			reload();
-		});
-
-		function reload(){
-			console.log("run")
-			$.ajax({
-				url: "https://arimb.ddns.net/getDistrictPoints/"+$("select#year").val(),
-				type: "GET",
-				success: function(result){
-					console.log(result)
-					console.log("success")
-				},
-				error: function(result){
-					console.log(result)
-					console.log("fail")
-				}
-			});
-			console.log("done")
-		}
-	</script>
 </head>
 <body>
 	<h1>District Points</h1>
