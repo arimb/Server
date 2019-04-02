@@ -36,7 +36,6 @@ function reload(){
 
 	xhr.onload = function() {
 	 var data = JSON.parse(xhr.responseText);
-	 console.log("received");
 	 Object.keys(data).forEach(function(key){
 	 	$("tbody#data").append(`
 	 		<tr>
@@ -54,7 +53,7 @@ function reload(){
 	xhr.onerror = function() {
 	  console.log('There was an error!');
 	};
-
+	
 	xhr.send();
 
 	// $.ajax({
