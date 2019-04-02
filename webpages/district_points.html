@@ -4,6 +4,7 @@
 	<title>AriMB - District Points</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="district_points.js"></script>
+	<script type="text/javascript" src="sorttable.js"></script>
 </head>
 <body>
 	<h1>District Points</h1>
@@ -20,7 +21,7 @@
 		<option>2010</option>
 	</select>
 	<input id="awards" type="checkbox">Include Awards
-	<table class="searchable sortable">
+	<table class="sortable">
 		<thead>
 			<th>Team</th>
 			<th>Adj DP</th>
@@ -30,6 +31,6 @@
 			<th>Playoff DP</th>
 			<th># Events</th>
 		</thead>
-		<tbody></tbody>
+		<tbody id="data"></tbody>
 </body>
 </html>

@@ -35,14 +35,27 @@ function reload(){
 	}
 
 	xhr.onload = function() {
-	 var responseText = xhr.responseText;
-	 console.log(responseText);
-	 // process the response.
+	 var data = JSON.parse(xhr.responseText);
+	 console.log("received");
+	 Object.keys(data).forEach(function(key){
+	 	$("tbody#data").append(`
+	 		<tr>
+	 			<td>`+key+`</td>
+	 			<td>`+Number(data[key]["adj_dp"]).toFixed(2)+`</td>
+	 			<td>`+Number(data[key]["total"]).toFixed(2)+`</td>
+	 			<td>`+Number(data[key]["qual"]).toFixed(2)+`</td>
+	 			<td>`+Number(data[key]["alliance"]).toFixed(2)+`</td>
+	 			<td>`+Number(data[key]["playoffs"]).toFixed(2)+`</td>
+	 			<td>`+Number(data[key]["num_events"]).toFixed(2)+`</td>
+	 		</tr>`)
+	 })
 	};
 
 	xhr.onerror = function() {
 	  console.log('There was an error!');
 	};
+
+	xhr.send();
 
 	// $.ajax({
 	// 	url: "https://arimb.ddns.net/"+$("select#year").val()+".json",
