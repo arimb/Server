@@ -43,6 +43,8 @@ function reload(){
 	xhr.onerror = function() {
 	  console.log('There was an error!');
 	};
+	
+	xhr.send();
 
 	// $.ajax({
 	// 	url: "https://arimb.ddns.net/"+$("select#year").val()+".json",
