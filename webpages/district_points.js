@@ -35,9 +35,11 @@ function reload(){
 	}
 
 	xhr.onload = function() {
-	 var responseText = xhr.responseText;
-	 console.log(responseText);
-	 // process the response.
+	 var data = JSON.parse(xhr.responseText);
+	 console.log(data);
+	 Object(data.keys()).forEach(function(key){
+		 $("tbody").append("<tr><td>"+key+"</td><td>"+data[key]["adj_dp"]+"</td></tr>");
+	 });
 	};
 
 	xhr.onerror = function() {
