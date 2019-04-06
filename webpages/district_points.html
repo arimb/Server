@@ -1,35 +1,38 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 <head>
 	<title>AriMB - District Points</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="district_points.js"></script>
 	<script type="text/javascript" src="sorttable.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<h1>District Points</h1>
-	<select id="year">
-		<option>2019</option>
-		<option>2018</option>
-		<option>2017</option>
-		<option>2016</option>
-		<option>2015</option>
-		<option>2014</option>
-		<option>2013</option>
-		<option>2012</option>
-		<option>2011</option>
-		<option>2010</option>
-	</select>
-	<input id="awards" type="checkbox">Include Awards
+	<div class="options">
+		<select id="year">
+			<option>2019</option>
+			<option>2018</option>
+			<option>2017</option>
+			<option>2016</option>
+			<option>2015</option>
+			<option>2014</option>
+			<option>2013</option>
+			<option>2012</option>
+			<option>2011</option>
+			<option>2010</option>
+		</select>
+		<input id="awards" type="checkbox">Include Awards?
+	</div>
 	<table class="sortable">
 		<thead>
-			<th>Team</th>
-			<th>Adj DP</th>
-			<th>Total DP</th>
-			<th>Qual DP</th>
-			<th>Alliance DP</th>
-			<th>Playoff DP</th>
-			<th># Events</th>
+			<th class="sorttable_numeric" id="rank">Rank</th>
+			<th class="sorttable_numeric">Team</th>
+			<th class="sorttable_numeric">Adj DP</th>
+			<th class="sorttable_numeric">Adj Qual DP</th>
+			<th class="sorttable_numeric">Adj Alliance DP</th>
+			<th class="sorttable_numeric">Adj Playoff DP</th>
+			<th class="sorttable_numeric"># Events</th>
 		</thead>
 		<tbody id="data"></tbody>
 </body>

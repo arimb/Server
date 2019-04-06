@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e08cb00-72a9-4099-8708-755655c93e01" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/district_points/2019.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2019.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/district_points/district_points.py" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/district_points.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/district_points/recalc.py" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/recalc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpages/district_points.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/district_points.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpages/district_points.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/district_points.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpages/sorttable.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/sorttable.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +22,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="170">
               <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
@@ -27,12 +34,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/district_points/district_points.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="88" column="15" selection-start-line="88" selection-start-column="15" selection-end-line="88" selection-end-column="15" />
+            <state relative-caret-position="231">
+              <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <element signature="e#72#1550#0" />
-                <element signature="e#1581#2973#0" />
               </folding>
             </state>
           </provider>
@@ -41,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/district_points/recalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="68">
+              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -69,8 +74,8 @@
         <option value="$PROJECT_DIR$/raspberrypi/district_points/district_points.py" />
         <option value="$PROJECT_DIR$/raspberrypi/server.py" />
         <option value="$PROJECT_DIR$/raspberrypi/district_points/recalc.py" />
-        <option value="$PROJECT_DIR$/district_points/recalc.py" />
         <option value="$PROJECT_DIR$/server.py" />
+        <option value="$PROJECT_DIR$/district_points/recalc.py" />
         <option value="$PROJECT_DIR$/district_points/district_points.py" />
       </list>
     </option>
@@ -87,7 +92,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -104,6 +108,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -269,7 +274,7 @@
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960254" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960254" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -305,16 +310,9 @@
         <state relative-caret-position="-408" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/district_points/recalc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="170">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
@@ -322,14 +320,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/district_points/recalc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/district_points/district_points.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="88" column="15" selection-start-line="88" selection-start-column="15" selection-end-line="88" selection-end-column="15" />
+        <state relative-caret-position="231">
+          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#72#1550#0" />
-            <element signature="e#1581#2973#0" />
           </folding>
         </state>
       </provider>

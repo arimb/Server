@@ -1,3 +1,5 @@
+var data;
+
 function createCORSRequest(method, url) {
   var xhr = new XMLHttpRequest();
   if ("withCredentials" in xhr) {
@@ -23,31 +25,43 @@ function createCORSRequest(method, url) {
 }
 
 $(document).ready(function(){
+	$("select#year").change(function(){
+		console.log("hit")
 		reload();
 	});
+	$("input#awards").change(function(){
+		load_table();
+	});
+	reload();
+});
+
+function load_table(){
+	$("tbody#data").empty();
+	Object.keys(data).forEach(function(key){
+	 	$("tbody#data").append(`
+	 		<tr>
+	 			<td>`+($("input#awards").is(":checked") ? data[key]["award_rank"] : data[key]["rank"])+`</td>
+	 			<td>`+key+`</td>
+	 			<td>`+Number(data[key]["adj"]).toFixed(2)+`</td>
+	 			<td>`+Number(data[key]["adj_qual"]).toFixed(2)+`</td>
+	 			<td>`+Number(data[key]["adj_alliance"]).toFixed(2)+`</td>
+	 			<td>`+Number(data[key]["adj_playoff"]).toFixed(2)+`</td>
+	 			<td>`+data[key]["num_events"]+`</td>
+	 		</tr>`)
+	})
+	sorttable.innerSortFunction.apply($("th#rank")[0], []);
+}
 
 function reload(){
-	console.log("run")
-
-	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/"+$("select#year").val()+".json");
+	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/district_points/"+$("select#year").val()+".json");
 	if (!xhr) {
 	  throw new Error('CORS not supported');
 	}
 
 	xhr.onload = function() {
-	 var data = JSON.parse(xhr.responseText);
-	 Object.keys(data).forEach(function(key){
-	 	$("tbody#data").append(`
-	 		<tr>
-	 			<td>`+key+`</td>
-	 			<td>`+Number(data[key]["adj_dp"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["total"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["qual"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["alliance"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["playoffs"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["num_events"]).toFixed(2)+`</td>
-	 		</tr>`)
-	 })
+	 // console.log(xhr.responseText);
+	 data = JSON.parse(xhr.responseText);
+	 load_table();
 	};
 
 	xhr.onerror = function() {
@@ -55,18 +69,5 @@ function reload(){
 	};
 	
 	xhr.send();
-
-	// $.ajax({
-	// 	url: "https://arimb.ddns.net/"+$("select#year").val()+".json",
-	// 	type: "GET",
-	// 	success: function(result){
-	// 		console.log(result)
-	// 		console.log("success")
-	// 	},
-	// 	error: function(result){
-	// 		console.log(result)
-	// 		console.log("fail")
-	// 	}
-	// });
 	console.log("done")
 }

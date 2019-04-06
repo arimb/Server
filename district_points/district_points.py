@@ -1,6 +1,4 @@
 import requests
-# import time
-# import csv
 import json
 
 class Team:
@@ -9,47 +7,35 @@ class Team:
         self.qual = 0
         self.alliance = 0
         self.playoff = 0
-        self.awards = 0
         self.bestQual = 0
         self.bestPlayoff = 0
         self.bestAlliance = 0
         self.num_events = 0
+        self.awards = 0
     def add_event(self, event, DP):
         factor = [1, 1, 0.37, 1.2, 0, 0.37][event["event_type"]]
         self.qual += DP["qual_points"]*factor
         self.alliance += DP["alliance_points"]*factor
         self.playoff += DP["elim_points"]*factor
-        self.awards += DP["award_points"]*factor
         self.bestQual = max(self.bestQual, DP["qual_points"])
         self.bestPlayoff = max(self.bestPlayoff, DP["elim_points"])
         self.bestAlliance = max(self.bestAlliance, DP["alliance_points"])
+        self.awards += DP["award_points"]*factor
         self.num_events += 1
-    def total(self):
-        return self.qual + self.alliance + self.playoff
-    def total_award(self):
-        return self.qual + self.alliance + self.playoff + self.awards
     def adj(self):
-        return self.total() / (self.num_events ** 0.7)
+        return (self.qual + self.alliance + self.playoff) / (self.num_events ** 0.7)
     def adjawards(self):
-        return self.total_award() / (self.num_events ** 0.7)
+        return (self.qual + self.alliance + self.playoff + self.awards) / (self.num_events ** 0.7)
     def valadj(self, value):
         return value * (self.num_events ** -0.7)
-    def make_dict(self):
-        return {"adj_dp": self.adj(),
-                "awards_adj": self.adjawards(),
-                "total": self.total(),
-                "total_awards": self.total_award(),
-                "playoffs": self.playoff,
-                "best_playoff": self.bestPlayoff,
-                "alliance": self.alliance,
-                "best_alliance": self.bestAlliance,
-                "qual": self.qual,
-                "best_qual": self.bestQual,
+    def make_dict(self, rank, award_rank):
+        return {"rank": rank,
+                "award_rank": award_rank,
+                "adj": self.adj(),
+                "adjawards": self.adjawards(),
+                "adj_qual": self.valadj(self.qual),
                 "adj_alliance": self.valadj(self.alliance),
                 "adj_playoff": self.valadj(self.playoff),
-                "adj_qual": self.valadj(self.qual),
-                "awards": self.awards,
-                "adj_awards": self.valadj(self.awards),
                 "num_events": self.num_events}
 
 def get_tba_data(url):
@@ -89,40 +75,26 @@ def get_district_points(year):
     #                                      teams[key].valadj(teams[key].qual)), reverse=True)
 
 def recalc(year):
-    with open("/var/www/html/" + str(year) + ".json", "w+") as file:
-        json.dump({team: Team.make_dict(x) for team, x in get_district_points(year).items()}, file)
-
-#    data = get_district_points(year)
-#    with open(str(year) + ".csv", "w+") as file:
-#        file.write("Team,AdjDP,AwardsAdj,TotalDP,AwardsTotal,Playoff,BestPlayoff,Alliance,BestAlliance,Qual,BestQual,AdjPlayoff,AdjAlliance,AdjQual,Awards,AdjAwards,NumEvents\n")
-#        for team, DP in data.items():
-#            file.write(team[3:] + ',' +
-#                       str(DP.adj()) + ',' +
-#                       str(DP.adjawards()) +',' +
-#                       str(DP.total()) + ',' +
-#                       str(DP.total_award()) + ',' +
-#                       str(DP.playoff) + ',' +
-#                       str(DP.bestPlayoff) + ',' +
-#                       str(DP.alliance) + ',' +
-#                       str(DP.bestAlliance) + ',' +
-#                       str(DP.qual) + ',' +
-#                       str(DP.bestQual) + ',' +
-#                       str(DP.valadj(DP.alliance)) + ',' +
-#                       str(DP.valadj(DP.playoff)) + ',' +
-#                       str(DP.valadj(DP.qual)) + ',' +
-#                       str(DP.awards) + ',' +
-#                       str(DP.valadj(DP.awards)) + ',' +
-#                       str(DP.num_events) + '\n')
-
-#    times = {}
-    # with open("times.csv", "w+") as file:
-    #     reader = csv.DictReader(file)
-    #     for row in reader:
-    #         times[row["Year"]] = row["Time"]
-    #     print(times)
-    #     times[str(year)] = str(time.time())
-    #     file.write("Year,Time\n")
-    #     for y, t in times.items():
-    #         file.write(y + ',' + t + '\n')
-
-#    return data
+    with open(str(year) + ".json", "w+") as file:
+        json.dump({team[3:]: Team.make_dict(x, i, ii) for i,(ii,(team,x)) in
+                   enumerate(sorted(enumerate(sorted(get_district_points(year).items(),
+                                                     key=lambda y: (
+                                                         y[1].adj(),
+                                                         y[1].valadj(y[1].playoff),
+                                                         y[1].bestPlayoff,
+                                                         y[1].valadj(y[1].alliance),
+                                                         y[1].valadj(y[1].alliance),
+                                                         y[1].bestAlliance,
+                                                         y[1].valadj(y[1].qual)),
+                                                     reverse=True), start=1),
+                                    key=lambda y: (
+                                        y[1][1].adjawards(),
+                                        y[1][1].valadj(y[1][1].playoff),
+                                        y[1][1].bestPlayoff,
+                                        y[1][1].valadj(y[1][1].alliance),
+                                        y[1][1].valadj(y[1][1].alliance),
+                                        y[1][1].bestAlliance,
+                                        y[1][1].valadj(y[1][1].qual),
+                                        y[1][1].valadj(y[1][1].awards)),
+                                    reverse=True), start=1)
+                   }, file)
