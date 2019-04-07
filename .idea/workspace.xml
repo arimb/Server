@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e08cb00-72a9-4099-8708-755655c93e01" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2010.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2010.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2010.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2011.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2011.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2011.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2012.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2012.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2012.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2013.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2013.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2013.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2014.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2014.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2014.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2015.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2015.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2015.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2016.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2016.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2016.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2017.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2017.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2017.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2018.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2018.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2018.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2019.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/2019.json" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/2019.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/district_points/district_points.py" beforeDir="false" afterPath="$PROJECT_DIR$/district_points/district_points.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpages/district_points.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/district_points.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpages/district_points.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/district_points.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpages/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,10 +74,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-20" />
-    <option name="y" value="-15" />
+    <option name="x" value="-18" />
+    <option name="y" value="-12" />
     <option name="width" value="1260" />
-    <option name="height" value="945" />
+    <option name="height" value="944" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">

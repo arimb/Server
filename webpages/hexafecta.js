@@ -26,28 +26,21 @@ function createCORSRequest(method, url) {
 }
 
 $(document).ready(function(){
-	$("select#year").change(function(){
-		reload();
-	});
-	$("input#awards").change(function(){
-		$("span#loading").css("visibility","visible");
-		setTimeout(load_table, 50);
-	});
 	reload();
 });
 
 function load_table(){
-	$("span#loading").css("visibility","visible");
-	$("tbody#data").empty();
-	Object.keys(data).forEach(function(key){
+	$("tbody#hexafecta").empty();
+	Object.keys(data["hexafecta"]).forEach(function(key){
 	 	$("tbody#data").append(`
 	 		<tr>
 	 			<td>`+key+`</td>
-	 			<td>`+Number($("input#awards").is(":checked") ? data[key]["adjawards"] : data[key]["adj"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["adj_qual"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["adj_alliance"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["adj_playoff"]).toFixed(2)+`</td>
-	 			<td>`+data[key]["num_events"]+`</td>
+	 			<td>`+data["hexafecta"][key]["IndDsn"]+`</td>
+	 			<td>`+data["hexafecta"][key]["Qual"]+`</td>
+	 			<td>`+data["hexafecta"][key]["Creativ"]+`</td>
+	 			<td>`+data["hexafecta"][key]["EngEx"]+`</td>
+	 			<td>`+data["hexafecta"][key]["Cntrl"]+`</td>
+	 			<td>`+data["hexafecta"][key]["Auton"]+`</td>
 	 		</tr>`)
 	})
 	sorttable.innerSortFunction.apply($("th:contains('Team')")[0], []);
@@ -57,7 +50,7 @@ function load_table(){
 
 function reload(){
 	$("span#loading").css("visibility","visible");
-	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/district_points/"+$("select#year").val()+".json");
+	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/hexafecta.json");
 	if (!xhr) {
 	  throw new Error('CORS not supported');
 	}

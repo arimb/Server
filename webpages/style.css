@@ -124,6 +124,12 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  font: 30px 'Cambria','Arial';
+  margin: 10px;
+  text-align: center;
+}
+
 div.options {
   display: flex;
   justify-content: center;
@@ -143,14 +149,12 @@ input[type=checkbox] {
   margin-left: 15px;
 }
 
-/*select {
-  font: 16px 'Calibri','Arial';
+div.centered {
+  justify-content: center;
+  display: flex;
+  margin: auto;
 }
 
-option {
-  font: 16px 'Calibri','Arial';
+details {
+  width: 100%;
 }
-
-span {
-  font: 16px 'Calibri','Arial';
-}*/
