@@ -40,8 +40,10 @@ function load_table(){
 	Object.keys(data).forEach(function(key){
 	 	$("tbody#data").append(`
 	 		<tr>
-	 			<td>`+($("input#awards").is(":checked") ? data[key]["award_rank"] : data[key]["rank"])+`</td>
-	 			<td>`+key+`</td>
+	 			<td>`
+	 			// +($("input#awards").is(":checked") ? data[key]["award_rank"] : data[key]["rank"])+`</td>
+	 			// <td>`
+	 			+key+`</td>
 	 			<td>`+Number(data[key]["adj"]).toFixed(2)+`</td>
 	 			<td>`+Number(data[key]["adj_qual"]).toFixed(2)+`</td>
 	 			<td>`+Number(data[key]["adj_alliance"]).toFixed(2)+`</td>
@@ -49,7 +51,7 @@ function load_table(){
 	 			<td>`+data[key]["num_events"]+`</td>
 	 		</tr>`)
 	})
-	sorttable.innerSortFunction.apply($("th#rank")[0], []);
+	sorttable.innerSortFunction.apply($("th:contains('Adj DP')")[0], []);
 }
 
 function reload(){
