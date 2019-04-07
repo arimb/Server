@@ -28,10 +28,8 @@ class Team:
         return (self.qual + self.alliance + self.playoff + self.awards) / (self.num_events ** 0.7)
     def valadj(self, value):
         return value * (self.num_events ** -0.7)
-    def make_dict(self, rank, award_rank):
-        return {"rank": rank,
-                "award_rank": award_rank,
-                "adj": self.adj(),
+    def make_dict(self):
+        return {"adj": self.adj(),
                 "adjawards": self.adjawards(),
                 "adj_qual": self.valadj(self.qual),
                 "adj_alliance": self.valadj(self.alliance),
@@ -76,25 +74,13 @@ def get_district_points(year):
 
 def recalc(year):
     with open(str(year) + ".json", "w+") as file:
-        json.dump({team[3:]: Team.make_dict(x, i, ii) for i,(ii,(team,x)) in
-                   enumerate(sorted(enumerate(sorted(get_district_points(year).items(),
-                                                     key=lambda y: (
-                                                         y[1].adj(),
-                                                         y[1].valadj(y[1].playoff),
-                                                         y[1].bestPlayoff,
-                                                         y[1].valadj(y[1].alliance),
-                                                         y[1].valadj(y[1].alliance),
-                                                         y[1].bestAlliance,
-                                                         y[1].valadj(y[1].qual)),
-                                                     reverse=True), start=1),
-                                    key=lambda y: (
-                                        y[1][1].adjawards(),
-                                        y[1][1].valadj(y[1][1].playoff),
-                                        y[1][1].bestPlayoff,
-                                        y[1][1].valadj(y[1][1].alliance),
-                                        y[1][1].valadj(y[1][1].alliance),
-                                        y[1][1].bestAlliance,
-                                        y[1][1].valadj(y[1][1].qual),
-                                        y[1][1].valadj(y[1][1].awards)),
-                                    reverse=True), start=1)
-                   }, file)
+        json.dump({team[3:]: Team.make_dict(x) for (team,x) in sorted(get_district_points(year).items(),
+                                                                      key=lambda y: (
+                                                                          y[1].adj(),
+                                                                          y[1].valadj(y[1].playoff),
+                                                                          y[1].bestPlayoff,
+                                                                          y[1].valadj(y[1].alliance),
+                                                                          y[1].valadj(y[1].alliance),
+                                                                          y[1].bestAlliance,
+                                                                          y[1].valadj(y[1].qual)),
+                                                                      reverse=True)}, file)

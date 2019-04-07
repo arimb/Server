@@ -26,16 +26,17 @@ function createCORSRequest(method, url) {
 
 $(document).ready(function(){
 	$("select#year").change(function(){
-		console.log("hit")
 		reload();
 	});
 	$("input#awards").change(function(){
-		load_table();
+		$("span#loading").css("visibility","visible");
+		setTimeout(load_table, 50);
 	});
 	reload();
 });
 
 function load_table(){
+	$("span#loading").css("visibility","visible");
 	$("tbody#data").empty();
 	Object.keys(data).forEach(function(key){
 	 	$("tbody#data").append(`
@@ -44,17 +45,20 @@ function load_table(){
 	 			// +($("input#awards").is(":checked") ? data[key]["award_rank"] : data[key]["rank"])+`</td>
 	 			// <td>`
 	 			+key+`</td>
-	 			<td>`+Number(data[key]["adj"]).toFixed(2)+`</td>
+	 			<td>`+Number($("input#awards").is(":checked") ? data[key]["adjawards"] : data[key]["adj"]).toFixed(2)+`</td>
 	 			<td>`+Number(data[key]["adj_qual"]).toFixed(2)+`</td>
 	 			<td>`+Number(data[key]["adj_alliance"]).toFixed(2)+`</td>
 	 			<td>`+Number(data[key]["adj_playoff"]).toFixed(2)+`</td>
 	 			<td>`+data[key]["num_events"]+`</td>
 	 		</tr>`)
 	})
+	sorttable.innerSortFunction.apply($("th:contains('Team')")[0], []);
 	sorttable.innerSortFunction.apply($("th:contains('Adj DP')")[0], []);
+	$("span#loading").css("visibility","hidden");
 }
 
 function reload(){
+	$("span#loading").css("visibility","visible");
 	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/district_points/"+$("select#year").val()+".json");
 	if (!xhr) {
 	  throw new Error('CORS not supported');

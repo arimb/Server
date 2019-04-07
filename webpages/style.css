@@ -48,7 +48,7 @@ table.sortable tbody {
     counter-reset: sortabletablescope;
 }
 table.sortable thead tr::before {
-    content: "Rank";
+    content: "";
     display: table-cell;
     font-size: 20px;
     font-weight: bold;
@@ -129,6 +129,14 @@ div.options {
   justify-content: center;
   font: 16px 'Calibri','Arial';
   margin: auto;
+}
+
+div.loading {
+  display: flex;
+  justify-content: center;
+  font: 20px 'Calibri','Arial';
+  margin: auto;
+  color: red;
 }
 
 input[type=checkbox] {
