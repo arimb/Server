@@ -18,7 +18,7 @@ table td, table th {
 table thead tr {
   height: 60px;
   background: #FFED86;
-  font-size: 20px;
+  font-size: 18px;
 }
 table tbody tr {
   height: 48px;
@@ -109,7 +109,7 @@ table.sortable tbody tr::before {
 }
 body {
   background: #9BC86A;
-  font: 400 20px 'Calibri','Arial';
+  font: 400 16px 'Calibri','Arial';
   padding: 20px;
 }
 

@@ -48,6 +48,10 @@ def get_hexafecta():
             quinfecta[team] = all_teams[team] + [names[all_teams[team].index(0)]]
         all_teams[team] += [sum(all_teams[team])]
 
+    hexafecta = {key[3:]:value for (key,value) in hexafecta.items()}
+    quinfecta = {key[3:]:value for (key,value) in quinfecta.items()}
+    all_teams = {key[3:]:value for (key,value) in all_teams.items()}
+
     # i = 0
     # while i==0:
     #     tmp = get_tba_data("teams/"+str(i)+"/keys")

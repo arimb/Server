@@ -31,20 +31,50 @@ $(document).ready(function(){
 
 function load_table(){
 	$("tbody#hexafecta").empty();
+
 	Object.keys(data["hexafecta"]).forEach(function(key){
-	 	$("tbody#data").append(`
+	 	$("tbody#hexafecta").append(`
 	 		<tr>
 	 			<td>`+key+`</td>
-	 			<td>`+data["hexafecta"][key]["IndDsn"]+`</td>
-	 			<td>`+data["hexafecta"][key]["Qual"]+`</td>
-	 			<td>`+data["hexafecta"][key]["Creativ"]+`</td>
-	 			<td>`+data["hexafecta"][key]["EngEx"]+`</td>
-	 			<td>`+data["hexafecta"][key]["Cntrl"]+`</td>
-	 			<td>`+data["hexafecta"][key]["Auton"]+`</td>
+	 			<td>`+data["hexafecta"][key][0]+`</td>
+	 			<td>`+data["hexafecta"][key][1]+`</td>
+	 			<td>`+data["hexafecta"][key][2]+`</td>
+	 			<td>`+data["hexafecta"][key][3]+`</td>
+	 			<td>`+data["hexafecta"][key][4]+`</td>
+	 			<td>`+data["hexafecta"][key][5]+`</td>
 	 		</tr>`)
 	})
-	sorttable.innerSortFunction.apply($("th:contains('Team')")[0], []);
-	sorttable.innerSortFunction.apply($("th:contains('Adj DP')")[0], []);
+
+	$("summary#quinfecta").html("See "+Object.keys(data["quinfecta"]).length+" teams")
+	Object.keys(data["quinfecta"]).forEach(function(key){
+	 	$("tbody#quinfecta").append(`
+	 		<tr>
+	 			<td>`+key+`</td>
+	 			<td>`+data["quinfecta"][key][0]+`</td>
+	 			<td>`+data["quinfecta"][key][1]+`</td>
+	 			<td>`+data["quinfecta"][key][2]+`</td>
+	 			<td>`+data["quinfecta"][key][3]+`</td>
+	 			<td>`+data["quinfecta"][key][4]+`</td>
+	 			<td>`+data["quinfecta"][key][5]+`</td>
+	 			<td>`+data["quinfecta"][key][6]+`</td>
+	 		</tr>`)
+	})
+
+	$("summary#all_teams").html("See "+Object.keys(data["all_teams"]).length+" teams")
+	Object.keys(data["all_teams"]).forEach(function(key){
+	 	$("tbody#all_teams").append(`
+	 		<tr>
+	 			<td>`+key+`</td>
+	 			<td>`+data["all_teams"][key][0]+`</td>
+	 			<td>`+data["all_teams"][key][1]+`</td>
+	 			<td>`+data["all_teams"][key][2]+`</td>
+	 			<td>`+data["all_teams"][key][3]+`</td>
+	 			<td>`+data["all_teams"][key][4]+`</td>
+	 			<td>`+data["all_teams"][key][5]+`</td>
+	 			<td>`+data["all_teams"][key][6]+`</td>
+	 		</tr>`)
+	})
+
 	$("span#loading").css("visibility","hidden");
 }
 
