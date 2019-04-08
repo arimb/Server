@@ -73,8 +73,8 @@ def get_district_points(year):
     #                                      teams[key].valadj(teams[key].qual)), reverse=True)
 
 def recalc(year):
-    with open(str(year) + ".json", "w+") as file:
-        json.dump({team[3:]: Team.make_dict(x) for (team,x) in sorted(get_district_points(year).items(),
+    with open("/var/www/html/district_points/" + str(year) + ".json", "w+") as file:
+        tmp = {team[3:]: Team.make_dict(x) for (team,x) in sorted(get_district_points(year).items(),
                                                                       key=lambda y: (
                                                                           y[1].adj(),
                                                                           y[1].valadj(y[1].playoff),
@@ -83,4 +83,5 @@ def recalc(year):
                                                                           y[1].valadj(y[1].alliance),
                                                                           y[1].bestAlliance,
                                                                           y[1].valadj(y[1].qual)),
-                                                                      reverse=True)}, file)
+                                                                      reverse=True)}
+        json.dump(tmp, file)
