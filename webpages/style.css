@@ -143,6 +143,7 @@ div.loading {
   font: 20px 'Calibri','Arial';
   margin: auto;
   color: red;
+  text-align: center;
 }
 
 input[type=checkbox] {

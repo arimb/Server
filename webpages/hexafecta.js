@@ -75,11 +75,12 @@ function load_table(){
 	 		</tr>`)
 	})
 
-	$("span#loading").css("visibility","hidden");
+	$("span#loading").css("display","none");
 }
 
 function reload(){
-	$("span#loading").css("visibility","visible");
+	$("span#loading").css("display","block");
+	$("span#server_error").css("display","none");
 	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/hexafecta.json");
 	if (!xhr) {
 	  throw new Error('CORS not supported');
@@ -93,6 +94,17 @@ function reload(){
 
 	xhr.onerror = function() {
 	  console.log('There was an error!');
+	  $("span#server_error").css("display","block");
+	  xhr2 = createCORSRequest('GET', 'https://arimb.github.io/Server/hexafecta/hexafecta.json');
+	  xhr2.onload = function(){
+	  	data = JSON.parse(xhr2.responseText);
+	  	load_table();
+	  }
+	  xhr2.onerror = function(){
+	  	console.log("second error :(");
+	  	console.log(xhr2);
+	  }
+	  xhr2.send();
 	};
 	
 	xhr.send();
