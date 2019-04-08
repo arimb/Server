@@ -1,38 +1,37 @@
 	<!DOCTYPE html>
 <html>
 <head>
-	<title>AriMB - District Points</title>
+	<title>AriMB - Winning Season</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="district_points.js"></script>
+	<script type="text/javascript" src="winning_season.js"></script>
 	<script type="text/javascript" src="sorttable.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>District Points</h1>
+	<h1>Winning Season</h1>
 	<div class="options">
 		<select id="year">
 			<option>2019</option>
 			<option>2018</option>
 			<option>2017</option>
 			<option>2016</option>
-			<option>2015</option>
 			<option>2014</option>
 			<option>2013</option>
 			<option>2012</option>
 			<option>2011</option>
 			<option>2010</option>
 		</select>
-		<input id="awards" type="checkbox"><span>Include Awards?</span>
 	</div>
 	<div class="loading"><span id="loading">Loading...</span></div>
+	<span class="centered">Note: Win percentage only accounts for wins and losses. Ties are not included in the denominator.</span>
 	<table class="sortable">
 		<thead>
 			<th class="sorttable_numeric">Team</th>
-			<th class="sorttable_numeric">Adj DP</th>
-			<th class="sorttable_numeric">Adj Qual DP</th>
-			<th class="sorttable_numeric">Adj Alliance DP</th>
-			<th class="sorttable_numeric">Adj Playoff DP</th>
-			<th class="sorttable_numeric"># Events</th>
+			<th class="sorttable_numeric">Win %</th>
+			<th class="sorttable_numeric">Wins</th>
+			<th class="sorttable_numeric">Losses</th>
+			<th class="sorttable_numeric">Ties</th>
+			<th class="sorttable_numeric">Matches Played</th>
 		</thead>
 		<tbody id="data"></tbody>
 </body>

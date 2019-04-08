@@ -158,3 +158,9 @@ div.centered {
 details {
   width: 100%;
 }
+
+span.centered {
+  justify-content: center;
+  display: flex;
+  margin: auto;
+}
