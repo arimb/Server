@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e08cb00-72a9-4099-8708-755655c93e01" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hexafecta/hexafecta.json" beforeDir="false" afterPath="$PROJECT_DIR$/hexafecta/hexafecta.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hexafecta/hexafecta.py" beforeDir="false" afterPath="$PROJECT_DIR$/hexafecta/hexafecta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpages/hexafecta.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/hexafecta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpages/hexafecta.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/hexafecta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpages/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="2e08cb00-72a9-4099-8708-755655c93e01" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
