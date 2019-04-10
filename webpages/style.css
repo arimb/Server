@@ -40,11 +40,11 @@ table td.r, table th.r {
   text-align: center;
 }
 
-table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+/*table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
     content: " \25B4\25BE" 
-}
+}*/
 
-table.sortable tbody {
+/*table.sortable tbody {
     counter-reset: sortabletablescope;
 }
 table.sortable thead tr::before {
@@ -61,7 +61,7 @@ table.sortable tbody tr::before {
     display: table-cell;
     vertical-align: inherit;
     padding-left: 10px;
-}
+}*/
 
 @media screen and (max-width: 35.5em) {
   table {

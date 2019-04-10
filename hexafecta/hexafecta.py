@@ -80,6 +80,6 @@ def get_hexafecta():
            "all_teams": all_teams}
 
 def recalc():
-    with open("hexafecta.json", "w+") as file:
-        tmp = get_hexafecta()
+    tmp = get_hexafecta()
+    with open("/var/www/html/hexafecta.json", "w+") as file:
         json.dump(tmp, file)

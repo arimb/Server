@@ -4,8 +4,9 @@
 	<title>AriMB - W/L/T Ranking</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="winning_season.js"></script>
-	<script type="text/javascript" src="sorttable.js"></script>
+	<script type="text/javascript" src="jquery.floatThead.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
 </head>
 <body>
 	<h1>W/L/T Ranking</h1>
@@ -27,14 +28,14 @@
 		<span id="server_error" style="display:none;">Server Error. Using cached data. Please contact arimb1999@gmail.com</span>
 	</div>
 	<div class="centered"><span>Note: Win percentage only accounts for wins and losses. Ties are not included in the denominator.</span></div>
-	<table class="sortable">
+	<table>
 		<thead>
-			<th class="sorttable_numeric">Team</th>
-			<th class="sorttable_numeric">Win %</th>
-			<th class="sorttable_numeric">Wins</th>
-			<th class="sorttable_numeric">Losses</th>
-			<th class="sorttable_numeric">Ties</th>
-			<th class="sorttable_numeric">Matches Played</th>
+			<th>Team</th>
+			<th>Win %</th>
+			<th>Wins</th>
+			<th>Losses</th>
+			<th>Ties</th>
+			<th>Matches Played</th>
 		</thead>
 		<tbody id="data"></tbody>
 </body>

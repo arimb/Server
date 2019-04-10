@@ -29,12 +29,17 @@ class Team:
     def valadj(self, value):
         return value * (self.num_events ** -0.7)
     def make_dict(self):
-        return {"adj": self.adj(),
-                "adjawards": self.adjawards(),
-                "adj_qual": self.valadj(self.qual),
-                "adj_alliance": self.valadj(self.alliance),
-                "adj_playoff": self.valadj(self.playoff),
-                "num_events": self.num_events}
+        return [self.adj(),
+                self.valadj(self.qual),
+                self.valadj(self.alliance),
+                self.valadj(self.playoff),
+                self.num_events]
+    def make_dict_awards(self):
+        return [self.adjawards(),
+                self.valadj(self.qual),
+                self.valadj(self.alliance),
+                self.valadj(self.playoff),
+                self.num_events]
 
 def get_tba_data(url):
     try:
@@ -73,15 +78,28 @@ def get_district_points(year):
     #                                      teams[key].valadj(teams[key].qual)), reverse=True)
 
 def recalc(year):
+    gdp = get_district_points(year)
+    tmp = [(team[3:], (i, Team.make_dict(x))) for (i, (team, x)) in enumerate(sorted(gdp.items(),
+                                                                            key=lambda y: (
+                                                                                y[1].adj(),
+                                                                                y[1].valadj(y[1].playoff),
+                                                                                y[1].bestPlayoff,
+                                                                                y[1].valadj(y[1].alliance),
+                                                                                y[1].valadj(y[1].alliance),
+                                                                                y[1].bestAlliance,
+                                                                                y[1].valadj(y[1].qual)),
+                                                                            reverse=True), start=1)]
+    tmp_awards = [(team[3:], (i, Team.make_dict_awards(x))) for (i, (team, x)) in enumerate(sorted(gdp.items(),
+                                                                                            key=lambda y: (
+                                                                                                y[1].adjawards(),
+                                                                                                y[1].valadj(y[1].playoff),
+                                                                                                y[1].bestPlayoff,
+                                                                                                y[1].valadj(y[1].alliance),
+                                                                                                y[1].valadj(y[1].alliance),
+                                                                                                y[1].bestAlliance,
+                                                                                                y[1].valadj(y[1].qual)),
+                                                                                            reverse=True), start=1)]
     with open("/var/www/html/district_points/" + str(year) + ".json", "w+") as file:
-        tmp = {team[3:]: Team.make_dict(x) for (team,x) in sorted(get_district_points(year).items(),
-                                                                      key=lambda y: (
-                                                                          y[1].adj(),
-                                                                          y[1].valadj(y[1].playoff),
-                                                                          y[1].bestPlayoff,
-                                                                          y[1].valadj(y[1].alliance),
-                                                                          y[1].valadj(y[1].alliance),
-                                                                          y[1].bestAlliance,
-                                                                          y[1].valadj(y[1].qual)),
-                                                                      reverse=True)}
         json.dump(tmp, file)
+    with open("/var/www/html/district_points/" + str(year) + "_awards.json", "w+") as file:
+        json.dump(tmp_awards, file)

@@ -30,49 +30,72 @@ $(document).ready(function(){
 		reload();
 	});
 	$("input#awards").change(function(){
-		$("span#loading").css("visibility","visible");
-		setTimeout(load_table, 50);
+		reload();
 	});
 	reload();
+	$("table").floatThead();
 });
 
 function load_table(){
 	$("span#loading").css("visibility","visible");
 	$("tbody#data").empty();
-	Object.keys(data).forEach(function(key){
+	data.forEach(function(val){
 	 	$("tbody#data").append(`
 	 		<tr>
-	 			<td>`+key+`</td>
-	 			<td>`+Number($("input#awards").is(":checked") ? data[key]["adjawards"] : data[key]["adj"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["adj_qual"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["adj_alliance"]).toFixed(2)+`</td>
-	 			<td>`+Number(data[key]["adj_playoff"]).toFixed(2)+`</td>
-	 			<td>`+data[key]["num_events"]+`</td>
+	 			<td>`+val[1][0]+`</td>
+	 			<td>`+val[0]+`</td>
+	 			<td>`+Number(val[1][1][0]).toFixed(2)+`</td>
+	 			<td>`+Number(val[1][1][1]).toFixed(2)+`</td>
+	 			<td>`+Number(val[1][1][2]).toFixed(2)+`</td>
+	 			<td>`+Number(val[1][1][3]).toFixed(2)+`</td>
+	 			<td>`+val[1][1][4]+`</td>
 	 		</tr>`)
 	})
-	sorttable.innerSortFunction.apply($("th:contains('Team')")[0], []);
-	sorttable.innerSortFunction.apply($("th:contains('Adj DP')")[0], []);
 	$("span#loading").css("visibility","hidden");
 }
 
 function reload(){
 	$("span#loading").css("visibility","visible");
 	$("span#server_error").css("display","none");
-	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/district_points/"+$("select#year").val()+".json");
+	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/district_points/" + 
+										$("select#year").val() + 
+										($("input#awards").is(":checked") ? "_awards" : "") +
+										".json");
 	if (!xhr) {
 	  throw new Error('CORS not supported');
 	}
 
 	xhr.onload = function() {
-	 // console.log(xhr.responseText);
-	 data = JSON.parse(xhr.responseText);
-	 load_table();
+		// console.log(xhr.responseText);
+		try{
+			data = JSON.parse(xhr.responseText);
+			load_table();
+		}catch(err){
+			console.log(err);
+			$("span#server_error").css("display","block");
+			xhr2 = createCORSRequest('GET', "https://arimb.github.io/Server/district_points/" +
+												$("select#year").val() +
+												($("input#awards").is(":checked") ? "_awards" : "") +
+												".json");
+			xhr2.onload = function(){
+				data = JSON.parse(xhr2.responseText);
+				load_table();
+			}
+			xhr2.onerror = function(){
+				console.log("second error :(");
+				console.log(xhr2);
+			}
+			xhr2.send();
+		}
 	};
 
 	xhr.onerror = function() {
 	  console.log('There was an error!');
 	  $("span#server_error").css("display","block");
-	  xhr2 = createCORSRequest('GET', "https://arimb.github.io/Server/district_points/"+$("select#year").val()+".json");
+	  xhr2 = createCORSRequest('GET', "https://arimb.github.io/Server/district_points/" +
+	  									$("select#year").val() +
+	  									($("input#awards").is(":checked") ? "_awards" : "") +
+	  									".json");
 	  xhr2.onload = function(){
 	  	data = JSON.parse(xhr2.responseText);
 	  	load_table();

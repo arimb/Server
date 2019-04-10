@@ -41,6 +41,6 @@ def get_winning_season(year):
     return out
 
 def recalc(year):
+    tmp = get_winning_season(year)
     with open("/etc/www/html/winning_season/"+str(year)+".json", "w+") as file:
-        tmp = get_winning_season(year)
         json.dump(tmp,file)

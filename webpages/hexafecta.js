@@ -27,6 +27,7 @@ function createCORSRequest(method, url) {
 
 $(document).ready(function(){
 	reload();
+	$("table").floatThead();
 });
 
 function load_table(){
@@ -87,9 +88,24 @@ function reload(){
 	}
 
 	xhr.onload = function() {
-	 // console.log(xhr.responseText);
-	 data = JSON.parse(xhr.responseText);
-	 load_table();
+	 	// console.log(xhr.responseText);
+		try{
+			data = JSON.parse(xhr.responseText);
+			load_table();
+		}catch(err){
+			console.log(err)
+			$("span#server_error").css("display","block");
+			xhr2 = createCORSRequest('GET', 'https://arimb.github.io/Server/hexafecta/hexafecta.json');
+			xhr2.onload = function(){
+				data = JSON.parse(xhr2.responseText);
+				load_table();
+			}
+			xhr2.onerror = function(){
+				console.log("second error :(");
+				console.log(xhr2);
+			}
+			xhr2.send();
+		}
 	};
 
 	xhr.onerror = function() {
