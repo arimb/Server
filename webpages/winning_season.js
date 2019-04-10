@@ -39,11 +39,12 @@ function load_table(){
 	 	$("tbody#data").append(`
 	 		<tr>
 	 			<td>`+val[0]+`</td>
-	 			<td`+(val[2]==0?" style='color:red;'":"")+`>`+Number(100*val[1]/(val[1]+val[2])).toFixed(1)+`</td>
-	 			<td>`+val[1]+`</td>
-	 			<td>`+val[2]+`</td>
-	 			<td>`+val[3]+`</td>
-	 			<td>`+(val[1]+val[2]+val[3])+`</td>
+	 			<td>`+val[1][0]+`</td>
+	 			<td`+(val[1][2]==0?" style='color:red;'":"")+`>`+Number(100*val[1][1]/(val[1][1]+val[1][2])).toFixed(1)+`</td>
+	 			<td>`+val[1][1]+`</td>
+	 			<td>`+val[1][2]+`</td>
+	 			<td>`+val[1][3]+`</td>
+	 			<td>`+(val[1][1]+val[1][2]+val[1][3])+`</td>
 	 		</tr>`)
 	})
 	$("span#loading").css("visibility","hidden");

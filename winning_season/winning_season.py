@@ -38,9 +38,9 @@ def get_winning_season(year):
     out.sort(key=lambda x:x[1]+x[2]+x[3], reverse=True)
     out.sort(key=lambda x:x[3])
     out.sort(key=lambda x:x[1]/(max(x[1]+x[2],1)), reverse=True)
-    return enumerate(out, start=1)
-#"/etc/www/html/winning_season/"+
+    return list(enumerate(out, start=1))
+
 def recalc(year):
     tmp = get_winning_season(year)
-    with open(str(year)+".json", "w+") as file:
+    with open("/etc/www/html/winning_season/"+str(year)+".json", "w+") as file:
         json.dump(tmp,file)

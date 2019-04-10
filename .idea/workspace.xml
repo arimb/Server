@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e08cb00-72a9-4099-8708-755655c93e01" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/webpages/wlt.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/wlt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpages/winning_season.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpages/winning_season.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winning_season/2010.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2010.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2011.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2011.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2012.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2012.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2013.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2013.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2014.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2014.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2015.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2015.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2016.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2016.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2017.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2017.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2018.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2018.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winning_season/2019.json" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/2019.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winning_season/recalc.py" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/recalc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winning_season/winning_season.py" beforeDir="false" afterPath="$PROJECT_DIR$/winning_season/winning_season.py" afterDir="false" />
     </list>
@@ -12,6 +24,27 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1850321902">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="Python Console" value="58" />
+          <entry key="py" value="14" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="72" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -30,7 +63,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/district_points/district_points.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
+            <state relative-caret-position="1734">
               <caret line="103" column="49" selection-start-line="103" selection-start-column="49" selection-end-line="103" selection-end-column="49" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -51,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hexafecta/hexafecta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
+            <state relative-caret-position="834">
               <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -63,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/winning_season/winning_season.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+            <state relative-caret-position="267">
+              <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -75,8 +108,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/winning_season/recalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -114,10 +147,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-18" />
-    <option name="y" value="-12" />
+    <option name="x" value="-20" />
+    <option name="y" value="-13" />
     <option name="width" value="1260" />
-    <option name="height" value="944" />
+    <option name="height" value="945" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -309,15 +342,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24801272" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24768825" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32949308" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.328341" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32707775" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -325,7 +358,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32949308" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.328341" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32707775" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -349,6 +382,9 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -385,16 +421,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/district_points/recalc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/district_points/district_points.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
+        <state relative-caret-position="1734">
           <caret line="103" column="49" selection-start-line="103" selection-start-column="49" selection-end-line="103" selection-end-column="49" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -402,9 +431,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/district_points/recalc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hexafecta/hexafecta.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
+        <state relative-caret-position="834">
           <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -414,8 +450,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/winning_season/winning_season.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+        <state relative-caret-position="267">
+          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -424,8 +460,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/winning_season/recalc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
