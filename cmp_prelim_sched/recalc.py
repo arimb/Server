@@ -16,18 +16,19 @@ import json
 from sys import argv
 
 events = {
-        "2019new": "Newton.csv",
-        "2019gal": "Galileo.csv",
-        "2019tur": "Turing.csv",
-        "2019hop": "Hopper.csv",
-        "2019roe": "Roebling.csv",
-        "2019carv": "Carver.csv"
+        "2019arc": "Archimedes.csv",
+        "2019cars": "Carson.csv",
+        "2019cur": "Curie.csv",
+        "2019dal": "Daly.csv",
+        "2019dar": "Darwin.csv",
+        "2019tes": "Tesla.csv"
         }
 
 for event_key, filename in events.items():
-    df = pandas.read_csv(filename)
+    df = pandas.read_csv(filename, dtype=str)
 
     output = []
+    print(filename)
     for index, row in df.iterrows():
       redsurrogates = [ 'frc' + team[:team.index("*")] for team in row[['Red 1', 'Red 2', 'Red 3']] if isinstance(team, str) and '*' in team ]
       blusurrogates = [ 'frc' + team[:team.index("*")] for team in row[['Blue 1', 'Blue 2', 'Blue 3']] if isinstance(team, str) and '*' in team ]
