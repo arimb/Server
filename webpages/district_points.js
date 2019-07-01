@@ -57,7 +57,7 @@ function load_table(){
 function reload(){
 	$("span#loading").css("visibility","visible");
 	$("span#server_error").css("display","none");
-	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/district_points/" + 
+	/*var xhr = createCORSRequest('GET', "https://arimb.ddns.net/district_points/" + 
 										$("select#year").val() + 
 										($("input#awards").is(":checked") ? "_awards" : "") +
 										".json");
@@ -87,11 +87,11 @@ function reload(){
 			}
 			xhr2.send();
 		}
-	};
+	 };
 
 	xhr.onerror = function() {
 	  console.log('There was an error!');
-	  $("span#server_error").css("display","block");
+	  $("span#server_error").css("display","block");*/
 	  xhr2 = createCORSRequest('GET', "https://arimb.github.io/Server/district_points/" +
 	  									$("select#year").val() +
 	  									($("input#awards").is(":checked") ? "_awards" : "") +
@@ -105,8 +105,8 @@ function reload(){
 	  	console.log(xhr2);
 	  }
 	  xhr2.send();
-	};
+	/*};
 	
-	xhr.send();
+	xhr.send();*/
 	console.log("done")
 }

@@ -53,7 +53,7 @@ function load_table(){
 function reload(){
 	$("span#loading").css("visibility","visible");
 	$("span#server_error").css("display","none");
-	var xhr = createCORSRequest('GET', "https://arimb.ddns.net/winning_season/"+$("select#year").val()+".json");
+	/*var xhr = createCORSRequest('GET', "https://arimb.ddns.net/winning_season/"+$("select#year").val()+".json");
 	if (!xhr) {
 	  throw new Error('CORS not supported');
 	}
@@ -81,7 +81,7 @@ function reload(){
 
 	xhr.onerror = function() {
 	  console.log('There was an error!');
-	  $("span#server_error").css("display","block");
+	  $("span#server_error").css("display","block");*/
 	  xhr2 = createCORSRequest('GET', "https://arimb.github.io/Server/winning_season/"+$("select#year").val()+".json");
 	  xhr2.onload = function(){
 	  	data = JSON.parse(xhr2.responseText);
@@ -92,8 +92,8 @@ function reload(){
 	  	console.log(xhr2);
 	  }
 	  xhr2.send();
-	};
+	/*};
 	
-	xhr.send();
+	xhr.send();*/
 	console.log("done")
 }
