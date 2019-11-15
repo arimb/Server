@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('span#loading').css('display', 'block');
 
 	var request = new XMLHttpRequest();
-	var url = 'http://arimb.pythonanywhere.com/district_points/' + $('select#year').children('option:selected')[0].value + ($('input#awards')[0].checked ? '_awards' : '');
+	var url = 'https://arimb.pythonanywhere.com/district_points/' + $('select#year').children('option:selected')[0].value + ($('input#awards')[0].checked ? '_awards' : '');
 	request.open('GET', url, true);
 	request.onload = function(){
 		var data = JSON.parse(this.response);
