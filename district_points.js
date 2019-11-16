@@ -2,7 +2,6 @@ $(document).ready(function(){
 	$('select#year').change(update);
 	$('input#awards').change(update);
 	$('th').css('top', -1);
-	$(window).resize();
 	update();
 });
 function update(){

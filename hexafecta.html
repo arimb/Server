@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hexafecta</title>
+	<script type="text/javascript" src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src='hexafecta.js'></script>
+</head>
+<body align='center'>
+	<h1>Hexafecta</h1>
+	<div id='loading' style='display:inline-block; padding:2px; background-color:#97bc62; border-color:#2c5f2d; border-width:1px; border-style:solid; margin-bottom:20px; '>
+		<span>Loading...</span>
+	</div>
+	<div id='hexafecta'>
+		<h2>Hexafecta Teams</h2>
+		<details open>
+			<summary></summary>
+			<table class='pure-table' align='center'>
+			<thead>
+				<th>Team</th>
+				<th>Industrial</th>
+				<th>Quality</th>
+				<th>Creativity</th>
+				<th>Excellence</th>
+				<th>Control</th>
+				<th>Auton</th>
+			</thead>
+			<tbody></tbody>
+		</table>
+		</details>
+	</div>
+	<div id='quinfecta'>
+		<h2>Teams Missing One Award</h2>
+		<details>
+			<summary></summary>
+			<table class='pure-table' align='center'>
+			<thead>
+				<th>Team</th>
+				<th>Industrial</th>
+				<th>Quality</th>
+				<th>Creativity</th>
+				<th>Excellence</th>
+				<th>Control</th>
+				<th>Auton</th>
+				<th>Missing</th>
+			</thead>
+			<tbody></tbody>
+		</table>
+		</details>
+	</div>
+	<div id='allteams'>
+		<h2 style='margin-bottom:0.2em;'>Hexafecta Teams</h2>
+		<div style='display:inline-block; padding:2px; background-color:#97bc62; border-color:#2c5f2d; border-width:1px; border-style:solid;'>
+			<span style='font-size:14px;'>All teams that have won an award are shown here. If a team has not won an award they will not appear in this list.</span>
+		</div>
+		<details>
+			<summary></summary>
+			<table class='pure-table' align='center'>
+			<thead>
+				<th>Team</th>
+				<th>Industrial</th>
+				<th>Quality</th>
+				<th>Creativity</th>
+				<th>Excellence</th>
+				<th>Control</th>
+				<th>Auton</th>
+				<th>Total</th>
+			</thead>
+			<tbody></tbody>
+		</table>
+		</details>
+	</div>
+	<div style='margin-top:20px;'>
+		<span id=last-updated></span>
+	</div>
+	
+</body>
+</html>
