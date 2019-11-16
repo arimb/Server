@@ -16,6 +16,11 @@ tbody td {
 	background-color: white !important;
 	text-align: left;
 }
+th {
+	position: sticky;
+	top: -1;
+	background-color: #e0e0e0;
+}
 h1,h3,h5 {
 	margin: 5px;
 }
@@ -31,9 +36,5 @@ input[type='checkbox'] {
 }
 .sticky {
   position: fixed;
-  top: 0;
-  width: 100%
-}
-.sticky + .content {
-  padding-top: 102px;
+  top: -1;
 }

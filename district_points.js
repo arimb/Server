@@ -1,19 +1,10 @@
-var header, sticky;
 $(document).ready(function(){
-	header = $('thead')[0];
-	sticky = header.offsetTop;
-	window.onscroll = function(){
-		if (window.pageYOffset > sticky){
-			header.classList.add("sticky");
-		}else{
-			header.classList.remove("sticky");
-		}
-	}
 	$('select#year').change(update);
 	$('input#awards').change(update);
+	$('th').css('top', -1);
+	$(window).resize();
 	update();
 });
-
 function update(){
 	$('span#loading').css('display', 'block');
 	$('tbody').html('');
