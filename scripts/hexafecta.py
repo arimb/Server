@@ -37,11 +37,10 @@ def get_hexafecta():
             hexafecta[team] = all_teams[team]
         elif count_nonzero(all_teams[team]) == 5:
             quinfecta[team] = all_teams[team] + [names[all_teams[team].index(0)]]
-        all_teams[team] += [sum(all_teams[team])]
 
-    hexafecta = {key[3:]:value for (key,value) in hexafecta.items()}
-    quinfecta = {key[3:]:value for (key,value) in quinfecta.items()}
-    all_teams = {key[3:]:value for (key,value) in all_teams.items()}
+    hexafecta = sorted([[key[3:]]+value for (key,value) in hexafecta.items()], key=lambda x:(-sum(x[1:]), int(x[0])))
+    quinfecta = sorted([[key[3:]]+value for (key,value) in quinfecta.items()], key=lambda x:(-sum(x[1:7]), int(x[0])))
+    all_teams = sorted([[key[3:]]+value for (key,value) in all_teams.items()], key=lambda x:(-sum(x[1:]), int(x[0])))
 
     return {"hexafecta": hexafecta,
            "quinfecta": quinfecta,

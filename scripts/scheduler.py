@@ -1,17 +1,28 @@
 import district_points, wlt, hexafecta
 import datetime
 
-# Runs every day at 8:00UTC (3:00ET, 10:00IS)
+# Runs every day at 5:00UTC (0:00ET, 7:00IS)
 
-day = datetime.datetime.utcnow().weekday()
-if day == 0:    # Monday
+doy = datetime.datetime.utcnow().timetuple().tm_yday
+if doy%3==0:
     print('Scheduler: District Points')
     district_points.run()
-elif day == 1:  # Tuesday
     print('Scheduler: WLT')
     wlt.run()
-elif day == 2:  # Wednesday
     print('Scheduler: Hexafecta')
     hexafecta.run()
-else:           # Thu-Sun
-    print('Scheduler: Nothing Run')
+elif doy%3==1:
+    print('Scheduler: WLT')
+    wlt.run()
+    print('Scheduler: Hexafecta')
+    hexafecta.run()
+    print('Scheduler: District Points')
+    district_points.run()
+else:
+    print('Scheduler: Hexafecta')
+    hexafecta.run()
+    print('Scheduler: District Points')
+    district_points.run()
+    print('Scheduler: WLT')
+    wlt.run()
+print('Scheduler: Done')
