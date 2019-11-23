@@ -44,7 +44,7 @@ $(document).ready(function(){
 			row.insertCell(7).innerHTML = team.slice(1,7).reduce((a,b)=>a+b,0);
 		});
 		$('div#loading').css('display', 'none');
-		$('span#last-updated').html('Last updated ' + this.getResponseHeader("Last-Modified"));
+		$('span#last-updated').html('Last updated ' + (new Date(this.getResponseHeader("Last-Modified"))).toLocaleString());
 		update_details();
 	}
 	request.onerror = function(err){

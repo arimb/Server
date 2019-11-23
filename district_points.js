@@ -25,7 +25,7 @@ function update(){
 			row.insertCell(6).innerHTML = team[1][1][4];
 		});
 		$('span#loading').css('display', 'none');
-		$('span#last-updated').html('Last updated ' + this.getResponseHeader("Last-Modified"));
+		$('span#last-updated').html('Last updated ' + (new Date(this.getResponseHeader("Last-Modified"))).toLocaleString());
 	}
 	request.onerror = function(err){
 		$('span#loading').css('color','red').html('Server Connection Error');

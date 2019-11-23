@@ -27,7 +27,7 @@ function update(){
 				$('tr:last > td:nth-child(3)').css('color', 'red')
 		});
 		$('span#loading').css('display', 'none');
-		$('span#last-updated').html('Last updated ' + this.getResponseHeader("Last-Modified"));
+		$('span#last-updated').html('Last updated ' + (new Date(this.getResponseHeader("Last-Modified"))).toLocaleString());
 	}
 	request.onerror = function(err){
 		$('span#loading').css('color','red').html('Server Connection Error');
