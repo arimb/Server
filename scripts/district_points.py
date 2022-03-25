@@ -74,7 +74,7 @@ def get_district_points(year):
                 for team in match['alliances'][match['winning_alliance']]['team_keys']:
                     if team not in teams:
                         teams[team] = Team(team)
-                    teams[team].playoff += 5*1.2
+                    teams[team].playoff += 2*1.2
         else:
             statuses = get_tba_data("event/"+event["key"]+"/teams/statuses")
             if statuses is None or len(statuses)==0: continue
@@ -120,6 +120,3 @@ def recalc(year):
         json.dump(tmp, file)
     with open("district_points/" + str(year) + "_awards.json", "w+") as file:
         json.dump(tmp_awards, file)
-def run():
-    for y in range(2010, 2020):
-        recalc(y)
