@@ -25,8 +25,7 @@ def recalc(year):
     data = {1: {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0},
             2: {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0},
             3: {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0},
-            4: {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0},
-            0: {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}}
+            4: {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}}
     names = {1: "Winners", 2: "Finals", 3: "Semifinals", 4: "Quarterfinals"}
 
     for event in events:
@@ -46,16 +45,19 @@ def recalc(year):
                 if seed in data[i].keys():
                     data[i][seed] += 1
 
-    for i in [1,2,3,4]:
+    for i in data.keys():
+        total = sum(data[i].values())
+        if total == 0:
+            continue
         fig, ax = plt.subplots()
-        bars = plt.bar(data[i].keys(), data[i].values(), align='center')
-        ax.bar_label(bars)
+        bars = plt.bar(data[i].keys(), [x/total for x in data[i].values()], align='center')
+        ax.bar_label(bars, fmt='%.3f')
         plt.title(names[i])
         plt.xlabel('Alliance')
-        plt.ylabel('Number of Occurances')
+        plt.ylabel('Frequency')
         plt.savefig(f'alliance_distribution/{year}_{names[i]}.png')
         plt.close()
 
-for year in range(2010,2016):
+for year in range(2021,2023):
     print(year)
     recalc(year)
