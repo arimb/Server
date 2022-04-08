@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alliance Distributions</title>
+	<script type="text/javascript" src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src='alliance_distribution.js'></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135433990-3"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-135433990-3');
+	</script>
+</head>
+<body align='center'>
+	<h1>Alliance Distributions</h1>
+	<div style='display:inline-block; padding:2px; background-color:#97bc62; border-color:#2c5f2d; border-width:1px; border-style:solid; margin-bottom:20px; '>
+		<div>
+			<select id='year'>
+				<option>2022</option>
+				<option>2020</option>
+				<option>2019</option>
+				<option>2018</option>
+				<option>2017</option>
+				<option>2016</option>
+				<option>2015</option>
+				<option>2014</option>
+				<option>2013</option>
+				<option>2012</option>
+				<option>2011</option>
+				<option>2010</option>
+			</select>
+		</div>
+		<span id='loading'>Loading...</span>
+	</div>
+	<div>
+		<div id="images">
+
+		</div>
+		<span id=last-updated></span>
+	</div>
+</body>
+</html>
