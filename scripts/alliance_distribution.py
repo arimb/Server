@@ -37,9 +37,12 @@ def recalc(year):
             alliances = tba.event_alliances(event['key'])
         except TypeError:
             continue
-        for alliance in alliances:
+        for num, alliance in enumerate(alliances, start=1):
             for i in level(alliance):
-                seed = alliance['name'][-1]
+                if 'name' in alliance:
+                    seed = alliance['name'][-1]
+                else:
+                    seed = str(num)
                 if seed in data[i].keys():
                     data[i][seed] += 1
 
@@ -51,5 +54,8 @@ def recalc(year):
         plt.xlabel('Alliance')
         plt.ylabel('Number of Occurances')
         plt.savefig(f'alliance_distribution/{year}_{names[i]}.png')
+        plt.close()
 
-recalc(2022)
+for year in range(2010,2016):
+    print(year)
+    recalc(year)
