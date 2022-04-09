@@ -25,11 +25,14 @@ h1,h2,h3,h5 {
 	margin: 5px;
 }
 h1 {
-	font-size: 2em;
+	font-size: 4em;
 	margin-top: 0.7em;
+	margin-bottom: 0.5em;
 }
 h2 {
+	font-size: 2em;
 	margin-top: 10px;
+	margin-bottom: 7px;
 }
 input[type='checkbox'] {
 	margin-left: 15px;

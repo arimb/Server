@@ -17,9 +17,14 @@
 	</script>
 </head>
 <body align='center'>
-	<h1>Alliance Distributions</h1>
-	<div style='display:inline-block; padding:2px; background-color:#97bc62; border-color:#2c5f2d; border-width:1px; border-style:solid; margin-bottom:20px; '>
-		<div>
+	<div id="header" style="display: inline-block; width: 100%; margin-bottom: 20px;">
+		<div id="back" style="display: inline-block; float: left;">
+			<a href="index.html">
+				<img src="back.png">
+			</a>
+		</div>
+		<div id="title" style="display: inline-block; position: absolute; left: 50%; margin-left: -190px;"> <!-- margin-left: -190px; -->
+			<h2>Alliance Distributions</h2>
 			<select id='year'>
 				<option>2022</option>
 				<option>2020</option>
@@ -35,12 +40,10 @@
 				<option>2010</option>
 			</select>
 		</div>
-		<span id='loading'>Loading...</span>
 	</div>
+	
 	<div>
-		<div id="images">
-
-		</div>
+		<div id="images"></div>
 		<span id=last-updated></span>
 	</div>
 </body>
