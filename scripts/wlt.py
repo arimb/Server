@@ -10,6 +10,8 @@ def get_winning_season(year):
         matches = get_tba_data("event/"+event["key"]+"/matches/simple")
         if matches is None or len(matches)==0: continue
         for match in matches:
+            if None in [match["alliances"]["red"]["score"], match["alliances"]["blue"]["score"]] or \
+                -1 in [match["alliances"]["red"]["score"], match["alliances"]["blue"]["score"]]: continue
             for team in match["alliances"]["red"]["team_keys"]:
                 if team not in teams: teams[team] = [0, 0, 0]
                 if match["winning_alliance"] == "red": teams[team][0] += 1
@@ -32,7 +34,3 @@ def get_winning_season(year):
 def recalc(year):
     with open("wlt/"+str(year)+".json", "w+") as file:
         json.dump(get_winning_season(year),file)
-
-def run():
-    for y in range(2010, 2020):
-        recalc(y)

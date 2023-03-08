@@ -14,16 +14,16 @@ lookup = {
 }
 names = ["IndDsn","Qual","Creativ","EngEx","Cntrl","Auton"]
 
-def get_hexafecta():
+def get_hexafecta(year):
     hexafecta = {}
     quinfecta = {}
     all_teams = {}
 
-    for year in range(1992,2020):
+    for year in range(1992,year+1):
         print(year)
         events = get_tba_data("events/"+str(year)+"/simple")
         for event in events:
-            if event["event_type"] > 5 : continue
+            if event["event_type"] not in [0,1,2,3,4,5,7] : continue
             print(event["key"])
             awards = get_tba_data("event/"+event["key"]+"/awards")
             for award in awards:
@@ -47,6 +47,6 @@ def get_hexafecta():
            "all_teams": all_teams}
 
 
-def run():
+def run(year):
     with open("hexafecta.json", "w+") as file:
-        json.dump(get_hexafecta(), file)
+        json.dump(get_hexafecta(year), file)
