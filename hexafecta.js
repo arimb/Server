@@ -11,21 +11,21 @@ $(document).ready(function(){
 		$('div#hexafecta tbody').html('')
 		data['hexafecta'].forEach(function(team, i){
 			var row = $('div#hexafecta tbody')[0].insertRow(-1);
-			for(var i=0; i<7; i++){
+			for(var i=0; i<8; i++){
 				row.insertCell(i).innerHTML = team[i];
 			}
 		});
 		$('div#quinfecta tbody').html('')
 		data['quinfecta'].forEach(function(team, i){
 			var row = $('div#quinfecta tbody')[0].insertRow(-1);
-			for(var i=0; i<7; i++){
+			for(var i=0; i<8; i++){
 				row.insertCell(i).innerHTML = team[i];
 			}
 		});
 		$('div#allteams tbody').html('')
 		data['all_teams'].forEach(function(team, i){
 			var row = $('div#allteams tbody')[0].insertRow(-1);
-			for(var i=0; i<7; i++){
+			for(var i=0; i<8; i++){
 				row.insertCell(i).innerHTML = team[i];
 			}
 		});

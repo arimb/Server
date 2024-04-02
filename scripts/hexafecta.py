@@ -36,7 +36,7 @@ def get_hexafecta(year):
                 if count_nonzero(data[team]) == 6 and team not in hexafecta_teams:
                     hexafecta_teams[team] = year
 
-    with open("pkl.pkl, b") as file:
+    with open("pkl.pkl", "wb") as file:
         pkl.dump([data, hexafecta_teams], file)
 
     hexafecta = list(map(lambda team : [team[0][3:]]+data[team[0]]+[team[1]], reversed(hexafecta_teams.items())))
