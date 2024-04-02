@@ -1,7 +1,6 @@
 from functions import get_tba_data
 from numpy import count_nonzero
 import json
-import pickle as pkl
 
 lookup = {
     16: 0,
@@ -21,10 +20,11 @@ def get_hexafecta(year):
 
     for year in range(1992,year+1):
         print(year)
-        events = get_tba_data("events/"+str(year))
-        events = filter(lambda event : event["event_type"] in [0,1,2,3,4,5,7], events)
-        events = sorted(events, key=lambda event : event["week"] if event["week"] is not None else 9999)
-        for event in events:
+        events = get_tba_data("events/"+str(year)+"/simple")
+        events = list(filter(lambda event : event["event_type"] in [0,1,2,3,4,5,7], events))
+        dates = list(map(lambda event : event["start_date"] if event["start_date"] is not None else str(year)+"-00-00", events))
+        events = [event for _,event in sorted(zip(dates,events))]
+        for event, date in zip(events, dates):
             print(event["key"])
             awards = get_tba_data("event/"+event["key"]+"/awards")
             awards = filter(lambda award : award["award_type"] in lookup, awards)
@@ -34,16 +34,13 @@ def get_hexafecta(year):
                     data[team] = [0,0,0,0,0,0]
                 data[team][lookup[award["award_type"]]] += 1
                 if count_nonzero(data[team]) == 6 and team not in hexafecta_teams:
-                    hexafecta_teams[team] = year
-
-    with open("pkl.pkl", "wb") as file:
-        pkl.dump([data, hexafecta_teams], file)
+                    hexafecta_teams[team] = date
 
     hexafecta = list(map(lambda team : [team[0][3:]]+data[team[0]]+[team[1]], reversed(hexafecta_teams.items())))
     
     data = dict(sorted(data.items(), key = lambda team : (sum(team[1]), int(team[0][3:]))))
     quinfecta = list(map(lambda team : [team]+data[team]+[names[data[team].index(0)]], filter(lambda team : count_nonzero(data[team]) == 5, data)))
-    all_teams = [[team[3:]]+value+[sum(value)] for (team,value) in data.items()]
+    all_teams = [[team[3:]]+value+[sum(value)] for (team,value) in sorted(data.items(), key = lambda team : (-sum(team[1]), int(team[0][3:])))]
 
 
     return {"hexafecta": hexafecta,
