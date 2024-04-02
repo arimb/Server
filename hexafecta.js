@@ -11,37 +11,23 @@ $(document).ready(function(){
 		$('div#hexafecta tbody').html('')
 		data['hexafecta'].forEach(function(team, i){
 			var row = $('div#hexafecta tbody')[0].insertRow(-1);
-			row.insertCell(0).innerHTML = team[0];
-			row.insertCell(1).innerHTML = team[1];
-			row.insertCell(2).innerHTML = team[2];
-			row.insertCell(3).innerHTML = team[3];
-			row.insertCell(4).innerHTML = team[4];
-			row.insertCell(5).innerHTML = team[5];
-			row.insertCell(6).innerHTML = team[6];
+			for(var i=0; i<7; i++){
+				row.insertCell(i).innerHTML = team[i];
+			}
 		});
 		$('div#quinfecta tbody').html('')
 		data['quinfecta'].forEach(function(team, i){
 			var row = $('div#quinfecta tbody')[0].insertRow(-1);
-			row.insertCell(0).innerHTML = team[0];
-			row.insertCell(1).innerHTML = team[1];
-			row.insertCell(2).innerHTML = team[2];
-			row.insertCell(3).innerHTML = team[3];
-			row.insertCell(4).innerHTML = team[4];
-			row.insertCell(5).innerHTML = team[5];
-			row.insertCell(6).innerHTML = team[6];
-			row.insertCell(7).innerHTML = team[7];
+			for(var i=0; i<7; i++){
+				row.insertCell(i).innerHTML = team[i];
+			}
 		});
 		$('div#allteams tbody').html('')
 		data['all_teams'].forEach(function(team, i){
 			var row = $('div#allteams tbody')[0].insertRow(-1);
-			row.insertCell(0).innerHTML = team[0];
-			row.insertCell(1).innerHTML = team[1];
-			row.insertCell(2).innerHTML = team[2];
-			row.insertCell(3).innerHTML = team[3];
-			row.insertCell(4).innerHTML = team[4];
-			row.insertCell(5).innerHTML = team[5];
-			row.insertCell(6).innerHTML = team[6];
-			row.insertCell(7).innerHTML = team.slice(1,7).reduce((a,b)=>a+b,0);
+			for(var i=0; i<7; i++){
+				row.insertCell(i).innerHTML = team[i];
+			}
 		});
 		$('div#loading').css('display', 'none');
 		$('span#last-updated').html('Last updated ' + (new Date(this.getResponseHeader("Last-Modified"))).toLocaleString());

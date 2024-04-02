@@ -1,6 +1,7 @@
 from functions import get_tba_data
 from numpy import count_nonzero
 import json
+import pickle as pkl
 
 lookup = {
     16: 0,
@@ -15,32 +16,35 @@ lookup = {
 names = ["IndDsn","Qual","Creativ","EngEx","Cntrl","Auton"]
 
 def get_hexafecta(year):
-    hexafecta = {}
-    quinfecta = {}
-    all_teams = {}
+    data = {}
+    hexafecta_teams = {}
 
     for year in range(1992,year+1):
         print(year)
-        events = get_tba_data("events/"+str(year)+"/simple")
+        events = get_tba_data("events/"+str(year))
+        events = filter(lambda event : event["event_type"] in [0,1,2,3,4,5,7], events)
+        events = sorted(events, key=lambda event : event["week"] if event["week"] is not None else 9999)
         for event in events:
-            if event["event_type"] not in [0,1,2,3,4,5,7] : continue
             print(event["key"])
             awards = get_tba_data("event/"+event["key"]+"/awards")
+            awards = filter(lambda award : award["award_type"] in lookup, awards)
             for award in awards:
-                if award["award_type"] in lookup:
-                    if award["recipient_list"][0]["team_key"] not in all_teams:
-                        all_teams[award["recipient_list"][0]["team_key"]] = [0,0,0,0,0,0]
-                    all_teams[award["recipient_list"][0]["team_key"]][lookup[award["award_type"]]] += 1
+                team = award["recipient_list"][0]["team_key"]
+                if team not in data:
+                    data[team] = [0,0,0,0,0,0]
+                data[team][lookup[award["award_type"]]] += 1
+                if count_nonzero(data[team]) == 6 and team not in hexafecta_teams:
+                    hexafecta_teams[team] = year
 
-    for team in all_teams:
-        if count_nonzero(all_teams[team]) == 6:
-            hexafecta[team] = all_teams[team]
-        elif count_nonzero(all_teams[team]) == 5:
-            quinfecta[team] = all_teams[team] + [names[all_teams[team].index(0)]]
+    with open("pkl.pkl, b") as file:
+        pkl.dump([data, hexafecta_teams], file)
 
-    hexafecta = sorted([[key[3:]]+value for (key,value) in hexafecta.items()], key=lambda x:(-sum(x[1:]), int(x[0])))
-    quinfecta = sorted([[key[3:]]+value for (key,value) in quinfecta.items()], key=lambda x:(-sum(x[1:7]), int(x[0])))
-    all_teams = sorted([[key[3:]]+value for (key,value) in all_teams.items()], key=lambda x:(-sum(x[1:]), int(x[0])))
+    hexafecta = list(map(lambda team : [team[0][3:]]+data[team[0]]+[team[1]], reversed(hexafecta_teams.items())))
+    
+    data = dict(sorted(data.items(), key = lambda team : (sum(team[1]), int(team[0][3:]))))
+    quinfecta = list(map(lambda team : [team]+data[team]+[names[data[team].index(0)]], filter(lambda team : count_nonzero(data[team]) == 5, data)))
+    all_teams = [[team[3:]]+value+[sum(value)] for (team,value) in data.items()]
+
 
     return {"hexafecta": hexafecta,
            "quinfecta": quinfecta,
@@ -50,3 +54,6 @@ def get_hexafecta(year):
 def run(year):
     with open("hexafecta.json", "w+") as file:
         json.dump(get_hexafecta(year), file)
+
+
+run(2024)
