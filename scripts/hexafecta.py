@@ -39,7 +39,7 @@ def get_hexafecta(year):
     hexafecta = list(map(lambda team : [team[0][3:]]+data[team[0]]+[team[1]], reversed(hexafecta_teams.items())))
     
     data = dict(sorted(data.items(), key = lambda team : (sum(team[1]), int(team[0][3:]))))
-    quinfecta = list(map(lambda team : [team]+data[team]+[names[data[team].index(0)]], filter(lambda team : count_nonzero(data[team]) == 5, data)))
+    quinfecta = list(map(lambda team : [team[3:]]+data[team]+[names[data[team].index(0)]], filter(lambda team : count_nonzero(data[team]) == 5, data)))
     all_teams = [[team[3:]]+value+[sum(value)] for (team,value) in sorted(data.items(), key = lambda team : (-sum(team[1]), int(team[0][3:])))]
 
 
