@@ -22,8 +22,8 @@ def get_hexafecta(year):
         print(year)
         events = get_tba_data("events/"+str(year)+"/simple")
         events = list(filter(lambda event : event["event_type"] in [0,1,2,3,4,5,7], events))
-        dates = list(map(lambda event : event["start_date"] if event["start_date"] is not None else str(year)+"-00-00", events))
-        events = [event for _,event in sorted(zip(dates,events))]
+        dates = list(map(lambda event : event["end_date"] if event["end_date"] is not None else event["start_date"] if event["start_date"] is not None else str(year)+"-00-00", events))
+        dates, events = zip(*[(date, event) for date,event in sorted(zip(dates,events), key = lambda pair : pair[0])])
         for event, date in zip(events, dates):
             print(event["key"])
             awards = get_tba_data("event/"+event["key"]+"/awards")
@@ -51,6 +51,3 @@ def get_hexafecta(year):
 def run(year):
     with open("hexafecta.json", "w+") as file:
         json.dump(get_hexafecta(year), file)
-
-
-run(2024)
