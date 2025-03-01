@@ -1,5 +1,6 @@
 import tbapy
 import matplotlib.pyplot as plt
+import traceback
 
 def level(alliance):
     if alliance is None:
@@ -36,6 +37,8 @@ def recalc(year):
             alliances = tba.event_alliances(event['key'])
         except TypeError:
             continue
+        except Exception:
+            print(traceback.format_exc())
         for num, alliance in enumerate(alliances, start=1):
             for i in level(alliance):
                 if 'name' in alliance:
@@ -57,7 +60,3 @@ def recalc(year):
         plt.ylabel('Frequency')
         plt.savefig(f'alliance_distribution/{year}_{names[i]}.png')
         plt.close()
-
-for year in range(2021,2023):
-    print(year)
-    recalc(year)

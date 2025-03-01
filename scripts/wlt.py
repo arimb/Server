@@ -1,5 +1,6 @@
 from functions import get_tba_data
 import json
+import traceback
 
 def get_winning_season(year):
     teams = {}
@@ -7,21 +8,24 @@ def get_winning_season(year):
     for event in events:
         if event["event_type"] > 5: continue
         print(event["key"])
-        matches = get_tba_data("event/"+event["key"]+"/matches/simple")
-        if matches is None or len(matches)==0: continue
-        for match in matches:
-            if None in [match["alliances"]["red"]["score"], match["alliances"]["blue"]["score"]] or \
-                -1 in [match["alliances"]["red"]["score"], match["alliances"]["blue"]["score"]]: continue
-            for team in match["alliances"]["red"]["team_keys"]:
-                if team not in teams: teams[team] = [0, 0, 0]
-                if match["winning_alliance"] == "red": teams[team][0] += 1
-                elif match["winning_alliance"] == "blue": teams[team][1] += 1
-                else: teams[team][2] += 1
-            for team in match["alliances"]["blue"]["team_keys"]:
-                if team not in teams: teams[team] = [0, 0, 0]
-                if match["winning_alliance"] == "blue": teams[team][0] += 1
-                elif match["winning_alliance"] == "red": teams[team][1] += 1
-                else: teams[team][2] += 1
+        try:
+            matches = get_tba_data("event/"+event["key"]+"/matches/simple")
+            if matches is None or len(matches)==0: continue
+            for match in matches:
+                if None in [match["alliances"]["red"]["score"], match["alliances"]["blue"]["score"]] or \
+                    -1 in [match["alliances"]["red"]["score"], match["alliances"]["blue"]["score"]]: continue
+                for team in match["alliances"]["red"]["team_keys"]:
+                    if team not in teams: teams[team] = [0, 0, 0]
+                    if match["winning_alliance"] == "red": teams[team][0] += 1
+                    elif match["winning_alliance"] == "blue": teams[team][1] += 1
+                    else: teams[team][2] += 1
+                for team in match["alliances"]["blue"]["team_keys"]:
+                    if team not in teams: teams[team] = [0, 0, 0]
+                    if match["winning_alliance"] == "blue": teams[team][0] += 1
+                    elif match["winning_alliance"] == "red": teams[team][1] += 1
+                    else: teams[team][2] += 1
+        except Exception:
+            print(traceback.format_exc())
 
     out = []
     for team, val in teams.items():
