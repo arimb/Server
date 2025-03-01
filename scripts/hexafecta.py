@@ -23,8 +23,8 @@ def get_hexafecta(year):
         print(year)
         events = get_tba_data("events/"+str(year)+"/simple")
         events = list(filter(lambda event : event["event_type"] in [0,1,2,3,4,5,7], events))
-        dates = list(map(lambda event : event["start_date"] if event["start_date"] is not None else str(year)+"-00-00", events))
-        events = [event for _,event in sorted(zip(dates,events), key=lambda x:x[0])]
+        dates = list(map(lambda event : event["end_date"] if event["end_date"] is not None else event["start_date"] if event["start_date"] is not None else str(year)+"-00-00", events))
+        dates, events = zip(*[(date, event) for date,event in sorted(zip(dates,events), key = lambda pair : pair[0])])
         for event, date in zip(events, dates):
             print(event["key"])
             try:
@@ -43,7 +43,7 @@ def get_hexafecta(year):
     hexafecta = list(map(lambda team : [team[0][3:]]+data[team[0]]+[team[1]], reversed(list(hexafecta_teams.items()))))
     
     data = dict(sorted(data.items(), key = lambda team : (sum(team[1]), int(team[0][3:]))))
-    quinfecta = list(map(lambda team : [team]+data[team]+[names[data[team].index(0)]], filter(lambda team : count_nonzero(data[team]) == 5, data)))
+    quinfecta = list(map(lambda team : [team[3:]]+data[team]+[names[data[team].index(0)]], filter(lambda team : count_nonzero(data[team]) == 5, data)))
     all_teams = [[team[3:]]+value+[sum(value)] for (team,value) in sorted(data.items(), key = lambda team : (-sum(team[1]), int(team[0][3:])))]
 
 
